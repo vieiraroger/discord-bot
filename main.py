@@ -1,6 +1,10 @@
 import discord
 
-client = discord.Client()
+intents = discord.Intents.default()
+intents.members = True
+
+client = discord.Client(intents=intents)
+
 
 @client.event
 async def on_ready():
@@ -25,9 +29,9 @@ async def on_message(message):
         await message.add_reaction("⬆")
 
 @client.event
-async def on_menber_join(menber):
-    channel = client.get_channel("791756036322361354")
-    await channel.send("bom dia" + menber.mention)
+async def on_member_join(member):
+    channel = client.get_channel(791756036322361354)
+    await channel.send("bom dia" + member.mention)
 
 
 
